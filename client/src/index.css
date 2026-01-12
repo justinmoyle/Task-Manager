@@ -88,6 +88,46 @@ label {
   }
 }
 
+@media screen and (width < 640px) {
+  .login-container {
+    padding: 10px;
+  }
+  .form-container {
+    width: calc(100% - 50px);
+  }
+}
+
+@media screen and (width < 768px) {
+  .form-container {
+    width: calc(100% - 50px);
+  }
+}
+
+@media screen and (height <= 660px){  
+  .form-container {
+    height: calc(100% - 10px);
+  }
+  .login-container{
+    height: 100vh;
+  }
+} 
+@media screen and (height <= 640) and (width <= 640px) {
+  .login-container{
+    height: 100%;
+    flex-direction: row;
+  }
+  .form-container {
+    height: calc(100% - 10px);
+  }
+}
+
+/* @media screen and (height <= 600px){  
+  .form-container {
+    height: calc(100% - 10px);
+  }
+  
+} */
+
 /* Custom Scrollbar Styles */
 /* Track */
 ::-webkit-scrollbar {
