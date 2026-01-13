@@ -5,7 +5,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900;6..12,1000&display=swap");
 
-
 * {
   margin: 0;
   padding: 0;
@@ -79,18 +78,20 @@ label {
   margin-left: 6px;
 }
 
-@media screen and (width: 390px){  
+@media screen and (width <= 390px) {
   .form-container {
     width: calc(100% - 40px);
+    margin-bottom: 30px;
   }
   .login-container {
-    gap: 70px;
+    gap: 50px;
   }
 }
 
 @media screen and (width < 640px) {
   .login-container {
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .form-container {
     width: calc(100% - 50px);
@@ -103,16 +104,18 @@ label {
   }
 }
 
-@media screen and (height <= 660px){  
+@media screen and (height <= 660px) {
   .form-container {
     height: calc(100% - 10px);
+    margin-bottom: 30px;
   }
-  .login-container{
-    height: 100vh;
+  .login-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
-} 
+}
 @media screen and (height <= 640) and (width <= 640px) {
-  .login-container{
+  .login-container {
     height: 100%;
     flex-direction: row;
   }
