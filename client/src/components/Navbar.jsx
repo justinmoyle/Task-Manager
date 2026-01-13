@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoMdMenu } from "react-icons/io";
 import { setOpenSidebar } from "../redux/slices/authSlice";
 import UserAvatar from "./UserAvatar"
+import NotificationPanel from "./NotificationPanel";
 
 export const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
@@ -30,7 +31,7 @@ export const Navbar = () => {
       </div>
 
       <div className="flex gap-2 items-center">
-        {/* <NotificationPanel/> */}
+        <NotificationPanel/>
         <UserAvatar/>
       </div>
     </div>
