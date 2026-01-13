@@ -1,5 +1,4 @@
-import React, { Fragment, useRef } from "react";
-import clsx from "clsx";
+import React, { Fragment } from "react";
 import { Navigate, Route, Routes, useLocation, Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
 import Dashboard from "./pages/Dashboard";
