@@ -73,7 +73,6 @@ const Sidebar = () => {
           "w-full lg:w-3/4 flex gap-2 px-3 py-2 rounded-full items-center text-gray-800 text-base hover:bg-[#2564ed2d]",
           path === el.link.split("/")[0] ? "bg-blue-700 text-white" : ""
         )}
-        
       >
         {el.icon}
         <span className="hover:text-[#2564ed]">{el.label}</span>
@@ -96,8 +95,8 @@ const Sidebar = () => {
       </div>
       <div>
         <button className="w-full flex gap-2 p-2 items-center text-lg text-gray-800 cursor-pointer">
-            <MdSettings/>
-            <span>Settings</span>
+          <MdSettings />
+          <span>Settings</span>
         </button>
       </div>
     </div>
