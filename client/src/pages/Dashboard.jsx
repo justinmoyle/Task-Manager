@@ -10,6 +10,7 @@ import { FaNewspaper, FaUsers } from "react-icons/fa";
 import { FaArrowsToDot } from "react-icons/fa6";
 import moment from "moment";
 import clsx from "clsx";
+import Chart from "../components/Chart";
 
 const Dashboard = () => {
   const summary = {
@@ -92,7 +93,10 @@ const Dashboard = () => {
         ))}
       </div>
       <div className="bg-white w-full my-16 p-4 rounded shadow-sm">
-        <h4>Chart by Priority</h4>
+        <h4 className="text-gray-600 font-semibold text-xl">
+          Chart by Priority
+        </h4>
+        <Chart/>
       </div>
     </div>
   );
