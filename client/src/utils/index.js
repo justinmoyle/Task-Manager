@@ -2,8 +2,14 @@ export const getInitials = (name) => {
   if (!name || typeof name !== "string") return "";
 
   const parts = name.split(" ");
-  return parts.map((n)=> n[0]).join("").toUpperCase();
-}
+  if (parts.length > 1) {
+    return parts
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+  }
+  
+};
 
 export const formatDate = (date) => {
   // Get the month, day, and year
@@ -31,7 +37,7 @@ export function dateFormatter(dateString) {
   return formattedDate;
 }
 
-export const PRIOTITYSTYELS = {
+export const PRIOTITYSTYLES = {
   high: "text-red-600",
   medium: "text-yellow-600",
   low: "text-blue-600",

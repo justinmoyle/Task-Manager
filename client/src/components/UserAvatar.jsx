@@ -16,6 +16,8 @@ const UserAvatar = () => {
     console.log("logout");
   };
 
+  // console.log("current user:", user)
+
   return (
     <>
       <div>
@@ -26,7 +28,7 @@ const UserAvatar = () => {
             justify-center rounded-full bg-blue-600"
             >
               <span className="text-white font-semibold">
-                {getInitials(user?.name || "")}
+                {getInitials(user?.name)}
               </span>
             </Menu.Button>
           </div>
