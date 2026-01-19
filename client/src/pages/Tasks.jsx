@@ -5,13 +5,14 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Loader from "../components/Loader";
 import Title from "../components/Title";
-import { Button } from "@headlessui/react";
+import Button from "../components/Button";
 import { IoMdAdd } from "react-icons/io";
 import Tabs from "../components/Tabs";
 import TaskTitle from "../components/TaskTitle";
 import BoardView from "../components/BoardView";
 import { tasks } from "../assets/data";
 import Table from "../components/tasks/Table";
+import AddTask from "../components/tasks/AddTask";
 
 const TABS = [
   { title: "Board View", icon: <MdGridView /> },
@@ -37,12 +38,13 @@ const Tasks = () => {
       <Loader />
     </div>
   ) : (
-    <>
-      <div className="w-full items-center justify-between mb-4">
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-4">
         <Title title={status ? `${status} Tasks` : "Tasks"} />
 
         {!status && (
           <Button
+            onClick={()=> setOpen(true)}
             label="Create Task"
             icon={<IoMdAdd className="text-lg" />}
             className="flex flex-row-reverse gap-1 items-center bg-blue-600 text-white
@@ -71,8 +73,10 @@ const Tasks = () => {
             </div>
           )}
         </Tabs>
+
+        <AddTask open={open} setOpen={setOpen}/>
       </div>
-    </>
+    </div>
   );
 };
 
