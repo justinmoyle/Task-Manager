@@ -8,7 +8,7 @@ import SelectedList from "../SelectedList";
 import { BiImages } from "react-icons/bi";
 import Button from "../Button";
 
-const LISTS = ["TODO", "INPROGRESS", "COMPLETED"];
+const LISTS = ["TODO", "IN-PROGRESS", "COMPLETED"];
 const PRIORITY = ["HIGH", "MEDIUM", "NORMAL", "LOW"];
 
 const uploadFileUrls = [];

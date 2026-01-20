@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AiTwotoneFolderOpen } from "react-icons/ai";
 
 const TaskDialog = () => {
-  return (
-    <div>TaskDialog</div>
-  )
-}
+  const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
-export default TaskDialog
+  const navigate = useNavigate();
+
+  const items = [
+    {
+      label: "Open Task",
+      icon: <AiTwotoneFolderOpen />,
+    },
+  ];
+
+  return <div>TaskDialog</div>;
+};
+
+export default TaskDialog;
