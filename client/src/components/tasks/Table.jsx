@@ -12,12 +12,24 @@ import { BiMessageAltDetail } from "react-icons/bi";
 import { FaList } from "react-icons/fa";
 import UserInfo from "../UserInfo";
 import Button from "../Button";
+import ConfirmationDialog from "../Dialogs";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
   medium: <MdKeyboardArrowUp />,
   low: <MdKeyboardArrowDown />,
 };
+
+const Table = ({ tasks }) => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selected, setSelected] = useState(null);
+
+  const deleteClicks = (id) => {
+  setSelected(id);
+  setOpenDialog(true);
+};
+
+const deleteHandler = () => {};
 
 const TableHeader = () => (
   <thead className="w-full border-b border-gray-600">
@@ -110,12 +122,6 @@ const TableRow = ({ task }) => (
   </tr>
 );
 
-const deleteClicks = () => {};
-
-const Table = ({ tasks }) => {
-  const [openDialog, setOpenDialog] = useState(false);
-  const [selected, setSelected] = useState(null);
-
   return (
     <>
       <div className="bg-white px-2 md:px-4 pb-9 shadow-md rounded">
@@ -131,11 +137,11 @@ const Table = ({ tasks }) => {
         </div>
       </div>
 
-      {/* <ConfirmationDialog
-      open={openDialog}
-      setOpen={setOpenDialog}
-      onClick={deletHandler}
-      /> */}
+      <ConfirmationDialog
+        open={openDialog}
+        setOpen={setOpenDialog}
+        onClick={deleteHandler}
+      />
     </>
   );
 };
