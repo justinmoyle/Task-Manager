@@ -10,8 +10,10 @@ import { useState } from "react";
 import { tasks } from "../assets/data";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import { PRIOTITYSTYLES, TASK_TYPE, BGS } from "../utils";
+import { PRIOTITYSTYLES, TASK_TYPE } from "../utils";
 import clsx from "clsx";
+import ConfirmationDialog from "../components/Dialogs";
+import AddUser from "../components/AddUser";
 
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
@@ -19,7 +21,42 @@ const ICONS = {
   low: <MdKeyboardArrowDown />,
 };
 
-const TableHeader = () => (
+
+
+const Trash = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [msg, setMsg] = useState(null);
+  const [selected, setSelected] = useState(null);
+  const [type, setType] = useState("delete");
+
+  const deleteAllClick = () => {
+    setType("deleteAll");
+    setMsg("Do you want to permenantly delete all items?");
+    setOpenDialog(true);
+  };
+
+  const restoreAllClick = () => {
+    setType("restoreAll");
+    setMsg("Do you want to restore all items in the trash?");
+    setOpenDialog(true);
+  };
+
+  const deleteClick = (id) => {
+    setType("delete");
+    setSelected(id);
+    setOpenDialog(true);
+  };
+
+  const restoreClick = (id) => {
+    setSelected(id);
+    setType("restore");
+    setMsg("Do you want to restore the selected item?");
+    setOpenDialog(true);
+  };
+
+
+  const TableHeader = () => (
   <thead className="border-b border-gray-300">
     <tr className="text-black text-left">
       <th className="py-2">Task Title</th>
@@ -55,47 +92,16 @@ const TableRow = ({ item }) => (
 
     <td className="py-2 flex gap-1 justify-end">
       <Button
-        icon={<MdOutlineRestore className="text-xl text-gray-500" />}
+        icon={<MdOutlineRestore className="text-xl text-gray-500 cursor-pointer" />}
         onClick={() => restoreClick(item._id)}
       />
       <Button
-        icon={<MdDelete className="text-xl text-red-600" />}
+        icon={<MdDelete className="text-xl text-red-600 cursor-pointer" />}
         onClick={() => deleteClick(item._id)}
       />
     </td>
   </tr>
 );
-
-const Trash = () => {
-  const [openDialog, setOpenDialog] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [msg, setMsg] = useState(null);
-  const [selected, setSelected] = useState(null);
-
-  const deleteAllClick = () => {
-    setType("deleteAll");
-    setMsg("Do you want to permenantly delete all items?");
-    setOpenDialog(true);
-  };
-
-  const restoreAllClick = () => {
-    setType("restoreAll");
-    setMsg("Do you want to restore all items in the trash?");
-    setOpenDialog(true);
-  };
-
-  const deleteClick = (id) => {
-    setType("delete");
-    setSelected(id);
-    setOpenDialog(true);
-  };
-
-  const restoreClick = (id) => {
-    setSelected(id);
-    setType("restore");
-    setMsg("Do you want to restore the selected item?");
-    setOpenDialog(true);
-  };
 
   return (
     <>
@@ -134,7 +140,7 @@ const Trash = () => {
 
       {/* <AddUser open={open} setOpen={setOpen} /> */}
 
-      {/* <ConfirmatioDialog
+      <ConfirmationDialog
         open={openDialog}
         setOpen={setOpenDialog}
         msg={msg}
@@ -142,7 +148,7 @@ const Trash = () => {
         type={type}
         setType={setType}
         onClick={() => deleteRestoreHandler()}
-      /> */}
+      />
     </>
   );
 };
