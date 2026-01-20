@@ -15,11 +15,16 @@ const TaskDialog = ({ task }) => {
   const [open, setOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [selected, setSelected] = useState(null);
 
   const navigate = useNavigate();
 
   const duplicateHandler = () => {};
-  const deleteClicks = () => {};
+
+  const deleteClicks = (id) => {
+    setSelected(id);
+    setOpenDialog(true);
+  };
   const deleteHandler = () => {};
 
   const items = [
@@ -116,12 +121,12 @@ const TaskDialog = ({ task }) => {
         task={task}
         key={new Date().getTime()}
       />
-      <AddSubTask open={open} setOpen={setOpen}/>
+      <AddSubTask open={open} setOpen={setOpen} />
 
       <ConfirmationDialog
-      open={openDialog}
-      setOpen={setOpenDialog}
-      onClick={deleteHandler}
+        open={openDialog}
+        setOpen={setOpenDialog}
+        onClick={deleteHandler}
       />
     </>
   );
