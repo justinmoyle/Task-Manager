@@ -1101,10 +1101,10 @@ export const tasks = [
 
 export const user = {
   _id: "662f32ffd1303cc",
-  name: "Codewave",
+  name: "Justin Moyle",
   title: "Administrator",
   role: "Admin",
-  email: "admin@mts.com",
+  email: "admin@admin.com",
   isAdmin: true,
   tasks: [],
   createdAt: "2024-02-06T09:58:44.794Z",

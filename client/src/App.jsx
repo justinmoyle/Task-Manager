@@ -13,12 +13,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOpenSidebar } from "./redux/slices/authSlice";
 import { Transition, TransitionChild } from "@headlessui/react";
 import { IoCloseOutline } from "react-icons/io5";
-// import Layout from './components/Layout';
+import Loader from "./components/Loader";
 
 function Layout() {
-  const user = useSelector((state) => state.auth);
+  const { user, isLoading } = useSelector((state) => state.auth);
 
   const location = useLocation();
+
+  if (isLoading) {
+    return <div><Loader/></div>
+  }
 
   return user ? (
     <div className="w-full h-screen flex flex-col md:flex-row">
@@ -78,7 +82,7 @@ const MobileSidebar = () => {
               </div>
 
               <div className="-mt-10">
-                <Sidebar/>
+                <Sidebar />
               </div>
             </div>
           </TransitionChild>

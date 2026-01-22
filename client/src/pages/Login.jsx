@@ -4,9 +4,16 @@ import { useNavigate } from "react-router-dom";
 import TextBox from "../components/TextBox";
 import Button from "../components/Button";
 import { useSelector } from "react-redux";
+import { useLoginMutation } from "../redux/slices/api/authApiSlice";
+import { toast } from "sonner";
+import { setCredentials } from "../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
+import Loader from "../components/Loader";
 
 const Login = () => {
-  const user = useSelector((state)=> state.auth);
+  
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -15,16 +22,24 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const [login, { isLoading }] = useLoginMutation();
+
   const submitHandler = async (data) => {
-    console.log("submit", data);
+    try {
+      const result = await login(data).unwrap();
+      dispatch(setCredentials(result));
+      navigate("/");
+      toast.success("Login Successful!");
+    } catch (error) {
+      toast.error(error?.data?.message || error.message);
+    }
   };
 
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     }
   }, [user, navigate]);
-
 
   return (
     <div className="w-screen h-screen min-h-screen flex items-center justify-center flex-col lg:flex-row bg-[#f3f4f6] relative overflow-y-auto">
@@ -96,11 +111,15 @@ const Login = () => {
                 </div> */}
               </div>
 
-              <Button
-                type="submit"
-                label="Submit"
-                className="w-full h-10 bg-blue-700 text-white rounded-full"
-              />
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <Button
+                  type="submit"
+                  label="Submit"
+                  className="w-full h-10 bg-blue-700 text-white rounded-full"
+                />
+              )}
             </div>
           </form>
         </div>

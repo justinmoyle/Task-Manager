@@ -84,14 +84,14 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
           </Dialog.Title>
 
           <p className='text-center text-gray-500'>
-            {"Are you sure you want to activate or deactive this account?"}
+            {"Are you sure you want to activate or deactivate this account?"}
           </p>
 
           <div className='bg-gray-50 py-3 sm:flex sm:flex-row-reverse gap-4'>
             <Button
               type='button'
               className={clsx(
-                " px-8 text-sm font-semibold text-white sm:w-auto",
+                " px-8 text-sm font-semibold text-white sm:w-auto cursor-pointer",
                 "bg-red-600 hover:bg-red-500"
               )}
               onClick={onClick}
@@ -100,7 +100,7 @@ export function UserAction({ open, setOpen, onClick = () => {} }) {
 
             <Button
               type='button'
-              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto border'
+              className='bg-white px-8 text-sm font-semibold text-gray-900 sm:w-auto border cursor-pointer'
               onClick={() => closeDialog()}
               label='No'
             />
